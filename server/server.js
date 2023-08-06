@@ -27,7 +27,7 @@ app.post("/generate",async (req, res) => {
 
     res.status(200).json({
       status: "success",
-      image: response.data?.images[0].uri,
+      image: response.data.images[0].uri,
     });
   } catch (err) {
     console.log(err);
