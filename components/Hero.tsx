@@ -19,7 +19,7 @@ const Home = () => {
         isLoading: true,
       };
     });
-    const url = "http://localhost:8000/generate";
+    const url = "https://ai-image-generator-ipcj.onrender.com/generate";
     const data = {
       prompt: x,
     };
