@@ -4,10 +4,10 @@ import Image from "next/image";
 import { LoaderIcon } from "lucide-react";
 import { Skeleton } from "antd";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Leaf = () => {
-  const { image, isLoading } = useRecoilValue(aiState);
+  const { image, isLoading,error } = useRecoilValue(aiState);
   console.log(image, isLoading);
 
   return (
@@ -29,6 +29,7 @@ const Leaf = () => {
           effect="blur"
         />
       )}
+      {!isLoading && error && <h1>Oops some error occured</h1>}
     </div>
   );
 };

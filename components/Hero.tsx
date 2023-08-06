@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from "react";
 import { Input, InputRef } from "antd";
 import { Button } from "antd";
@@ -5,9 +7,8 @@ import { useRecoilValue } from "recoil";
 import { aiState } from "./atoms/initialState";
 import { useSetRecoilState } from "recoil";
 import Leaf from "./Leaf";
-import axios from "axios";
 
-const Home = () => {
+const Hero = () => {
   const { prompt } = useRecoilValue(aiState);
   const setAiState = useSetRecoilState(aiState);
   const [x, setX] = useState("");
@@ -19,7 +20,10 @@ const Home = () => {
         isLoading: true,
       };
     });
-    const url = "https://ai-image-generator-ipcj.onrender.com/generate";
+
+    const xx= process.env.NEXT_PUBLIC_DOMAIN;
+    console.log(xx);
+    const url = `${xx}/generate`;
     const data = {
       prompt: x,
     };
@@ -48,18 +52,16 @@ const Home = () => {
       });
     } catch (err) {
       console.log("error occured " + err);
-    }
-
-    /* if(response.ok){
-    setAiState((prev)=>{
-     return {
-      ...prev,
-      image:result.image
-     }
-    }) */
-
-    //}
+      setAiState((prev) => {
+        return {
+          ...prev,
+          isLoading: false,
+          error:true
+        };
+    })
   };
+
+}
 
   return (
     <div className="flex  justify-center flex-col  items-center p-20">
@@ -88,4 +90,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Hero;
