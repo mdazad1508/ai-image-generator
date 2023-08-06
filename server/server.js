@@ -10,6 +10,7 @@ app.use(cors());
 const port = 8000;
 
 const leap = new Leap(process.env.LEAP_API_KEY);
+console.log(process.env.LEAP_API_KEY);
 
 
 
@@ -27,7 +28,7 @@ app.post("/generate",async (req, res) => {
 
     res.status(200).json({
       status: "success",
-      image: response.data.images[0].uri,
+      image: response.data?.images[0].uri,
     });
   } catch (err) {
     console.log(err);
