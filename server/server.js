@@ -9,8 +9,7 @@ app.use(express.json());
 app.use(cors());
 const port = 8000;
 
-const leap = new Leap(process.env.LEAP_API_KEY);
-console.log(process.env.LEAP_API_KEY);
+const leap = new Leap("e7147dda-1eab-4abf-be98-fc6b0d215657");
 
 
 
